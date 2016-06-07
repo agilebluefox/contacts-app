@@ -1,0 +1,19 @@
+/* General styles */
+* {
+    border: 1px solid orange;
+}
+
+body {
+    margin: 10%;
+}
+
+/* Form styles */
+
+.form-control {
+    max-width: 600px;
+}
+
+.btn {
+    background-color: steelblue;
+    color: white;
+}
