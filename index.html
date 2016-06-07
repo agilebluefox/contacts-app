@@ -8,46 +8,69 @@
 </head>
 <body>
 <div class="container">
-    <h2>Add a contact:</h2>
-    <form>
-        <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text" name="first-name" class="form-control" id="first-name" placeholder="First Name">
-        </div>
-        <div class="form-group">
-            <label for="last-name">Last Name</label>
-            <input type="text" name="last-name" class="form-control" id="last-name" placeholder="Last Name">
-        </div>
-        <div class="form-group">
-            <label for="address-1">Address 1</label>
-            <input type="text" name="address-1" class="form-control" id="address-1" placeholder="Address 1">
-        </div>
-        <div class="form-group">
-            <label for="city">City</label>
-            <input type="text" name="city" class="form-control" id="city" placeholder="City">
-        </div>
-        <div class="form-group">
-            <label for="state">State</label>
-            <input type="text" name="state" class="form-control" id="state" placeholder="State">
-        </div>
-        <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="tel" name="phone" class="form-control" id="phone" placeholder="Phone Number">
-        </div>
-      <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="Email">
-      </div>
+    <h1>Add a contact:</h1>
+    <div class="add-contact">
+        <form>
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" name="first-name" class="form-control" id="first-name" placeholder="First Name">
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" name="last-name" class="form-control" id="last-name" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+                <label for="address-1">Address 1</label>
+                <input type="text" name="address-1" class="form-control" id="address-1" placeholder="Address 1">
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" name="city" class="form-control" id="city" placeholder="City">
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" name="state" class="form-control" id="state" placeholder="State">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" name="phone" class="form-control" id="phone" placeholder="Phone Number">
+            </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="Email">
+          </div>
 
-      <button type="submit" class="btn btn-default">Add</button>
-    </form>
+          <button type="submit" class="btn btn-default">Add</button>
+        </form>
+    </div>
 
+    <div class="display-contact">
+        <ul class="contact-info">
+            <li class="first-name">First Name: Some</li>
+            <li class="last-name">Last Name: Friend</li>
+            <li class="phone-number">Phone Number: 555-555-5555</li>
+            <li>Address:</li>
+            <ul>
+                <li class="address">123 No Way Lane, Wild Town, State</li>
+            </ul>
+        </ul>
+    </div>
+    <h1>Contacts:</h1>
+    <div class="contacts">
+        <ul class="contact-list">
+            <li>John Smith</li>
+            <li>David Painter</li>
+            <li>Poindexter Brooks</li>
+            <li>Ralph Banner</li>
+            <li>Sammy Turner</li>
+        </ul>
+    </div>
 </div>
 
 
-
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 <script src="js/app.js"></script>
 </body>
 </html>

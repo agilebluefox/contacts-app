@@ -3,17 +3,41 @@
     border: 1px solid orange;
 }
 
-body {
-    margin: 10%;
+.container {
+    width: 100%;
+    overflow: hidden;
 }
 
 /* Form styles */
 
-.form-control {
-    max-width: 600px;
-}
-
 .btn {
     background-color: steelblue;
     color: white;
+}
+
+/* Contact display styles */
+
+div.add-contact {
+    display: inline-block;
+    min-width: 280px;
+    width: 40%;
+}
+
+div.display-contact {
+    display: inline-block;
+    min-width: 280px;
+    width: 40%;
+    vertical-align: top;
+}
+
+div.contacts {
+
+}
+
+ul.contact-list {
+    list-style: none;
+}
+
+ul.contact-info {
+    list-style: none;
 }
