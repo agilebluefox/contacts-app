@@ -57,9 +57,10 @@ function pageLoad() {
 
     // Get the DOM elements
     var form = $('form');
+    var add = $('button#add');
 
     // Event handlers
-    form.submit(function(event){
+    form.on('submit', add, function(event){
         event.preventDefault();
         // Put the form fields in a JSON object.
         var fields = $(this).serializeArray();
