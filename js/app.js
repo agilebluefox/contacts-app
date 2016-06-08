@@ -8,9 +8,9 @@ var contacts = {
            firstname: 'Poindexter',
            lastname: 'Brooks',
            address1: '101 Smart Lane',
-           city: 'Inteligencia',
-           state: 'AK',
-           phone: '909-877-5645',
+           city1: 'Inteligencia',
+           state1: 'AK',
+           phone1: '909-877-5645',
            email: 'poindexter@smartypants.edu'
         },
 
@@ -19,9 +19,9 @@ var contacts = {
             firstname: 'John',
             lastname: 'Smith',
             address1: '3570 Wonder Where Drive',
-            city: 'Boston',
-            state: 'MA',
-            phone: '318-777-0923',
+            city1: 'Boston',
+            state1: 'MA',
+            phone1: '318-777-0923',
             email: 'johnsmith@nowhere.com'
         },
 
@@ -30,9 +30,9 @@ var contacts = {
             firstname: 'Ralph',
             lastname: 'Turner',
             address1: '3644 Open Road Ave.',
-            city: 'Seattle',
-            state: 'WA',
-            phone: '734-227-7863',
+            city1: 'Seattle',
+            state1: 'WA',
+            phone1: '734-227-7863',
             email: 'ralphthemouth@yahoo.com'
         },
 
@@ -41,10 +41,10 @@ var contacts = {
             firstname: 'Neal',
             lastname: 'Luck',
             address1: '666 Underworld Lane',
-            city: 'Bad Place',
-            state: 'TX',
-            phone: '998-313-5003',
-            email: 'eviltwin@wicked.com'
+            city1: 'Bad Place',
+            state1: 'TX',
+            phone1: '998-313-5003',
+            email1: 'eviltwin@wicked.com'
         }
 }
 
@@ -57,15 +57,25 @@ function pageLoad() {
 
     // Get the DOM elements
     var form = $('form');
-    var add = $('button#add');
 
     // Event handlers
-    form.on('submit', add, function(event){
+    // form.on('submit', 'button#addPhone', function(event){
+    //     event.preventDefault();
+    //     addPhone();
+    // });
+    // form.on('submit', 'button#addAddress', function(event){
+    //     event.preventDefault();
+    //     addAddress();
+    // });
+    form.on('click', 'button#add', function(event){
         event.preventDefault();
         // Put the form fields in a JSON object.
-        var fields = $(this).serializeArray();
+        var fields = $(form).serializeArray();
         addContact(fields);
-        this.reset();
+        // Found this solution online
+        // The get(0) allows you to access the underlying DOM element
+        // instead of just the jQuery array object containing the form.
+        form.get(0).reset();
     });
     $('ul.contact-list').on('click', 'li a', function(event){
         event.preventDefault();
@@ -74,6 +84,7 @@ function pageLoad() {
         console.log("The id value is: " + id);
         showContact(id);
     });
+
 }
 
 // Function to load the selected contact's information.
@@ -83,7 +94,7 @@ function showContact(id) {
     console.log('The contact selected is: ' + selectedContact);
     var info = $('ul.contact-info');
 
-    info.html('<li class="firstname">First Name: ' + selectedContact.firstname + '</li><li class="lastname">Last Name: ' + selectedContact.lastname + '</li><li class="phone-number">Phone Number: ' + selectedContact.phone + '</li><li>Address:</li><ul><li class="address">' + selectedContact.address1 + ', ' + selectedContact.city + ', ' + selectedContact.state + '</li></ul>');
+    info.html('<li class="firstname">First Name: ' + selectedContact.firstname + '</li><li class="lastname">Last Name: ' + selectedContact.lastname + '</li><li class="phone-number">Phone Number: ' + selectedContact.phone1 + '</li><li>Address:</li><ul><li class="address">' + selectedContact.address1 + ', ' + selectedContact.city1 + ', ' + selectedContact.state1 + '</li></ul>');
 }
 
 function getContact(id) {
@@ -132,3 +143,11 @@ function addToList(contact) {
 function renderListItem(id, first, last) {
     $('ul.contact-list').append('<li><a href="' + id + '">' + first + " " + last + '</a></li>');
 }
+
+// function addPhone() {
+
+// }
+
+// function addAddress() {
+
+// }
