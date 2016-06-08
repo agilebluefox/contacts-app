@@ -1,11 +1,9 @@
 // Initialize global contact variables.
-var id, firstname, lastname, address1, city, state, phone, email;
-// Get the DOM elements
-var form = $('form');
+var id, firstname, lastname, address1, city, state, phone, email, pk;
 
 // Include some dummy data to practice displaying stuff.
-var contacts = [
-        {
+var contacts = {
+        0: {
            id: 0,
            firstname: 'Poindexter',
            lastname: 'Brooks',
@@ -16,7 +14,7 @@ var contacts = [
            email: 'poindexter@smartypants.edu'
         },
 
-        {
+        1: {
             id: 1,
             firstname: 'John',
             lastname: 'Smith',
@@ -27,7 +25,7 @@ var contacts = [
             email: 'johnsmith@nowhere.com'
         },
 
-        {
+        2: {
             id: 2,
             firstname: 'Ralph',
             lastname: 'Turner',
@@ -38,7 +36,7 @@ var contacts = [
             email: 'ralphthemouth@yahoo.com'
         },
 
-        {
+        3: {
             id: 3,
             firstname: 'Neal',
             lastname: 'Luck',
@@ -47,13 +45,18 @@ var contacts = [
             state: 'TX',
             phone: '998-313-5003',
             email: 'eviltwin@wicked.com'
-        },
-];
+        }
+}
+
 
 $(document).ready(pageLoad);
 // Run this when the page loads.
 function pageLoad() {
     buildList();
+    pk = 5;
+
+    // Get the DOM elements
+    var form = $('form');
 
     // Event handlers
     form.submit(function(event){
@@ -66,6 +69,7 @@ function pageLoad() {
     $('ul.contact-list').on('click', 'li a', function(event){
         event.preventDefault();
         id = $(this).attr('href');
+        id = +id;
         console.log("The id value is: " + id);
         showContact(id);
     });
@@ -73,9 +77,17 @@ function pageLoad() {
 
 // Function to load the selected contact's information.
 function showContact(id) {
-    var selectedContact = $.grep(contacts, function(contact) {return(contact.id === 3);
+    console.log("This id is: " + id);
+    var selectedContact = getContact(id);
+    console.log('The contact selected is: ' + selectedContact);
     var info = $('ul.contact-info');
-    info.html('<li class="first-name">First Name: Some</li><li class="last-name">Last Name: Friend</li><li class="phone-number">Phone Number: 555-555-5555</li><li>Address:</li><ul><li class="address">123 No Way Lane, Wild Town, State</li></ul>');
+
+    info.html('<li class="firstname">First Name: ' + selectedContact.firstname + '</li><li class="lastname">Last Name: ' + selectedContact.lastname + '</li><li class="phone-number">Phone Number: ' + selectedContact.phone + '</li><li>Address:</li><ul><li class="address">' + selectedContact.address1 + ', ' + selectedContact.city + ', ' + selectedContact.state + '</li></ul>');
+}
+
+function getContact(id) {
+    console.log("This id is still: " + id);
+    return contacts[id];
 }
 
 // Get the data from the form, create a new contact object and store it
@@ -83,7 +95,7 @@ function showContact(id) {
 function addContact(fields) {
     // Constructor for the Person object.
     var Person = function() {
-        this.id = contacts.length;
+        this.id = pk;
     };
     // Make a new contact object.
     var contact = new Person();
@@ -92,17 +104,18 @@ function addContact(fields) {
         contact[fields.name] = fields.value;
     });
     // Add the new contact object to the array of contacts.
-    contacts.push(contact);
+    contacts[pk] = contact;
     addToList(contact);
+    pk += 1;
 }
 
 // Render the names to the list of contacts.
 function buildList() {
-    for (var i = 0; i < contacts.length; i++)
+    for (var prop in contacts)
     {
-        id = contacts[i].id;
-        firstname = contacts[i].firstname;
-        lastname = contacts[i].lastname;
+        id = contacts[prop].id;
+        firstname = contacts[prop].firstname;
+        lastname = contacts[prop].lastname;
         renderListItem(id, firstname, lastname);
     }
 }
